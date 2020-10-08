@@ -42,13 +42,6 @@ echo "Applying GSI-specific patches"
 cd build/make
 git am $BL/patches/0001-build-Don-t-handle-apns-conf.patch
 cd ../..
-cd device/phh/treble
-git revert 82b15278bad816632dcaeaed623b569978e9840d --no-edit # Update lineage.mk for LineageOS 16.0
-git am $BL/patches/0001-Remove-fsck-SELinux-labels.patch
-git am $BL/patches/0001-treble-Add-overlay-lineage.patch
-git am $BL/patches/0001-treble-Don-t-specify-config_wallpaperCropperPackage.patch
-git am $BL/patches/0001-TEMP-treble-Fix-init.treble-environ.rc-hardcode-for-.patch
-cd ../../..
 cd external/tinycompress
 git revert 82c8fbf6d3fb0a017026b675adf2cee3f994e08a --no-edit # tinycompress: Use generated kernel headers
 cd ../..
