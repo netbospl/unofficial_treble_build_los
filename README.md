@@ -1,27 +1,34 @@
 
-## Building PHH-based LineageOS GSIs ##
-
-To get started with building LineageOS GSI, you'll need to get familiar with [Git and Repo](https://source.android.com/source/using-repo.html) as well as [How to build a GSI](https://github.com/phhusson/treble_experimentations/wiki/How-to-build-a-GSI%3F).
-
-First, open a new Terminal window, which defaults to your home directory.  Clone the modified treble_experimentations repo there:
-
-    git clone https://github.com/AndyCGYan/treble_experimentations
+## Building PHH-based eOS GSIs branch v1-q ##
 
 Create a new working directory for your LineageOS build and navigate to it:
 
-    mkdir lineage-17.x-build-gsi; cd lineage-17.x-build-gsi
+    mkdir e-build-gsi; cd e-build-gsi
 
-Initialize your LineageOS workspace:
+Initialize your /e/ v1-q branch workspace:
 
-    repo init -u https://github.com/LineageOS/android.git -b lineage-17.1
+    repo init -u https://gitlab.e.foundation/e/os/android.git -b v1-q
 
-Clone the modified treble patches and this repo:
+Clone the modified treble manifest to local_manifests:
 
-    git clone https://github.com/AndyCGYan/treble_patches -b lineage-17.1
-    git clone https://github.com/AndyCGYan/treble_build_los -b lineage-17.1
+    git clone https://github.com/netbospl/e-treble-local_manifests.git -b v1-q-trebleonly .repo/local_manifests
+
+Sync repos
+
+    repo sync -j$(nproc --all)
+
+Apply LOS patches from /e/
+
+    bash treble_build_los/apply_los_patches.sh
+
+Generate Treble Lineage Device
+
+    cd device/phh/treble
+    bash generate.sh lineage
+    cd ../../..
 
 Finally, start the build script:
 
-    bash treble_build_los/buildbot_treble.sh
+    bash unofficial_treble_build_los/buildbot_treble.sh
 
 Be sure to update the cloned repos from time to time!

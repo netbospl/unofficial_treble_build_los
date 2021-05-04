@@ -1,7 +1,7 @@
 #!/bin/bash
 echo ""
 echo "Uofficial /e/ v1-q Treble Buildbot"
-echo "ATTENTION: this script syncs repo on each run"
+echo "ATTENTION: this script DOES NOT syncs repo on each run"
 echo "Executing in 5 seconds - CTRL-C to exit"
 echo ""
 sleep 5
@@ -9,23 +9,6 @@ sleep 5
 START=`date +%s`
 BUILD_DATE="$(date +%Y%m%d)"
 BL=$PWD/unofficial_treble_build_los
-
-echo "Preparing local manifest"
-mkdir -p .repo/local_manifests
-cp $BL/manifest.xml .repo/local_manifests/manifest.xml
-echo ""
-
-echo "Syncing repos"
-repo sync -c --force-sync --no-clone-bundle --no-tags -j$(nproc --all)
-echo ""
-
-echo "Apply LOS patches provided by /e/"
-bash treble_build_los/apply_los_patches.sh
-
-echo "Generating Treble Lineage Device"
-cd device/phh/treble
-bash generate.sh lineage
-cd ../../..
 
 echo "Setting up build environment"
 source build/envsetup.sh &> /dev/null
