@@ -27,7 +27,7 @@ buildVariant() {
 	make installclean
 	make -j$(nproc --all) systemimage
 	make vndk-test-sepolicy
-	mv $OUT/system.img ~/build-output/e-q-$BUILD_DATE-UNOFFICIAL-${1}.img
+	mv $OUT/system.img ~/build-output/eos-$LINEAGE_VERSION-$BUILD_DATE-UNOFFICIAL-${1}.img
 }
 
 buildVariant treble_arm_avS
@@ -36,7 +36,7 @@ buildVariant treble_a64_avS
 buildVariant treble_a64_bvS
 buildVariant treble_arm64_avS
 buildVariant treble_arm64_bvS
-ls ~/build-output | grep 'e-q'
+ls ~/build-output | grep 'eos-'
 
 END=`date +%s`
 ELAPSEDM=$(($(($END-$START))/60))
