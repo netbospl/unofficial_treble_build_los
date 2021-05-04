@@ -1,7 +1,7 @@
 
 ## Building PHH-based eOS GSIs branch v1-q ##
 
-Create a new working directory for your LineageOS build and navigate to it:
+Create a new working directory for your /e/ OS build and navigate to it:
 
     mkdir e-build-gsi; cd e-build-gsi
 
@@ -15,17 +15,11 @@ Clone the modified treble manifest to local_manifests:
 
 Sync repos
 
-    repo sync -j$(nproc --all)
+    repo sync --force-sync -j$(nproc --all)
 
 Apply LOS patches from /e/
 
     bash treble_build_los/apply_los_patches.sh
-
-Generate Treble Lineage Device
-
-    cd device/phh/treble
-    bash generate.sh lineage
-    cd ../../..
 
 Finally, start the build script:
 
