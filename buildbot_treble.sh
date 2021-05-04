@@ -27,7 +27,7 @@ buildVariant() {
 	make installclean
 	make -j$(nproc --all) systemimage
 	make vndk-test-sepolicy
-	mv $OUT/system.img ~/build-output/eos-$LINEAGE_VERSION-$BUILD_DATE-UNOFFICIAL-${1}.img
+	mv $OUT/system.img ~/build-output/eos-$LINEAGE_VERSION-$BUILD_DATE-${1}.img
 }
 
 buildVariant treble_arm_avS
